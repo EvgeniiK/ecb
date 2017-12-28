@@ -1,0 +1,17 @@
+# An example DB configuration. Copy database.yml.example to database.yml.
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  username: username
+
+development:
+  <<: *default
+  database: db_name
+
+test:
+  <<: *default
+  database: db_name
+
+production:
+  <<: *default
+  database: db_name
