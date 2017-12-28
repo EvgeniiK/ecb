@@ -1,0 +1,15 @@
+<div class="center">
+  <%= form_tag(controller: "index", action: "exchange") do %>
+      <p>Amount in EUR</p>
+      <%= number_field_tag :amount %>
+      <p>Please fill this field with dates in format "YYYY-MM-DD". Several values must be split with comma.</p>
+      <%= text_field_tag :dates %>
+      <%= submit_tag :exchange %>
+  <% end %>
+  <% if @result %>
+      <p>Result:</p>
+      <% @result.each do |r| %>
+          <div><%= r %></div>
+      <% end %>
+  <% end %>
+</div>
