@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version 2.4.0
+* Rails version 5.1.4
 
-Things you may want to cover:
+You need to have installed ruby on rails environment with postgresql.
 
-* Ruby version
+To run project:
 
-* System dependencies
+1) `git clone git@github.com:EvgeniiK/ecb.git`
 
-* Configuration
+2) `gem install bundler`
 
-* Database creation
+3) `bundle install`
 
-* Database initialization
+4) rename `database.yml.example` file to `database.yml`
 
-* How to run the test suite
+5) fill `database.yml` with your postgres credentials
 
-* Services (job queues, cache servers, search engines, etc.)
+6) run `rake db:create db:migrate`
 
-* Deployment instructions
+7) start the server `rails s`
 
-* ...
+8) open `http://localhost:3000`
+
+9) use
+
+There are two main service in this project.
+First - `parse_rates` service. You can call it from console by typing `ParseRates.perform`.
+
+`perform` method can handle several variables:
+`file: 'path_to_file'` default is file from [here](http://sdw-wsrest.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?format=csvdata)
+
+`date_column` default: 'TIME_PERIOD'
+
+`value_column` default: 'OBS_VALUE'
+
+Second - `exchanger` service. You can call it from console by typing `Exchanger.exchange(eur_amount, dates)`
+
+`eur_amount` - integer amount
+
+`dates` - can be one or array of dates
